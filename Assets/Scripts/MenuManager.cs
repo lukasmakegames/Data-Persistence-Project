@@ -12,30 +12,23 @@ public class MenuManager : MonoBehaviour
 
 
     [HideInInspector]
-    public string bestName;
+    public static string bestName;
     [HideInInspector]
-    public int bestScore;
+    public static int bestScore;
 
     [HideInInspector]
-    public string userName;
+    public static string userName;
     [HideInInspector]
-    public int userScore;
+    public static int userScore;
 
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
         bestName = PlayerPrefs.GetString("name", "noname");
         bestScore = PlayerPrefs.GetInt("score", 0);
         Text.text = "Best Score : " + bestName  + " : " + bestScore;
         userScore = 0;
         userName = "noname";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
 	public void UpdateName()
