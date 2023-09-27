@@ -89,5 +89,7 @@ public class MainManager : MonoBehaviour
 	{
 		PlayerPrefs.SetString("name", MenuManager.BestName);
 		PlayerPrefs.SetInt("score", MenuManager.BestScore);
+		PlayerPrefs.Save();
+
 	}
 }
