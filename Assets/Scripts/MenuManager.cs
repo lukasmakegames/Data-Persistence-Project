@@ -7,46 +7,51 @@ using TMPro;
 public class MenuManager : MonoBehaviour
 {
 
-    public TMP_Text Text;
-    public TMP_InputField InputText;
+	public TMP_Text Text;
+	public TMP_InputField InputText;
 
+	public static string BestName { get; private set; }
+	public static int BestScore { get; private set; }
+	public static string UserName { get; private set; }
+	public static int UserScore { get; private set; }
 
-    [HideInInspector]
-    public static string bestName;
-    [HideInInspector]
-    public static int bestScore;
-
-    [HideInInspector]
-    public static string userName;
-    [HideInInspector]
-    public static int userScore;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        bestName = PlayerPrefs.GetString("name", "noname");
-        bestScore = PlayerPrefs.GetInt("score", 0);
-        Text.text = "Best Score : " + bestName  + " : " + bestScore;
-        userScore = 0;
-        userName = "noname";
-    }
+	// Start is called before the first frame update
+	void Start()
+	{
+		BestName = PlayerPrefs.GetString("name", "noname");
+		BestScore = PlayerPrefs.GetInt("score", 0);
+		Text.text = "Best Score : " + BestName + " : " + BestScore;
+		UserScore = 0;
+		UserName = "noname";
+	}
 
 	public void UpdateName()
 	{
-        userName = InputText.text;
+		UserName = InputText.text;
 
-    }
+	}
 
-    public void StartButton()
-    {
-        SceneManager.LoadScene("main");
-    }
+	public void StartButton()
+	{
+		SceneManager.LoadScene("main");
+	}
 
-        public void Quit()
+	public void Quit()
 	{
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+		UnityEditor.EditorApplication.isPlaying = false;
 #endif
-        Application.Quit();
-    }
+		Application.Quit();
+	}
+
+	public static void SetBestScore(int score)
+	{
+		BestScore = score;
+	}
+
+	public static void SetBestName(string name)
+	{
+		BestName = name;
+	}
+
 }
